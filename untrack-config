@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# untrack-config <absolute-path>
+
+FILE="$1"
+[[ -z "$FILE" ]] && { echo "Usage: untrack-config <absolute-path>"; exit 1; }
+
+if [[ "$FILE" == ~* ]]; then
+    FILE="${FILE/#\~/$HOME}"
+fi
+REALPATH=$(realpath "$FILE" 2>/dev/null || echo "$FILE")
+
+TRACKED="$HOME/.bc/configs/tracked-files.txt"
+if grep -Fx "$REALPATH" "$TRACKED" &>/dev/null; then
+    grep -Fxv "$REALPATH" "$TRACKED" > "$TRACKED.tmp"
+    mv "$TRACKED.tmp" "$TRACKED"
+    echo "✅ Removed $REALPATH from tracking."
+    # Remove xattr
+    setfattr -x user.backup.tracked "$REALPATH" 2>/dev/null
+else
+    echo "ℹ️  Not tracked."
+fi

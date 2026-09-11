@@ -1,0 +1,8 @@
+[Unit]
+Description=Backup data at boot
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/kms/.bc/backup-data.sh
+User=user

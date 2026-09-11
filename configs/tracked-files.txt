@@ -1,0 +1,4 @@
+# Lines starting with # are comments
+/home/kms/.bashrc
+/home/kms/.config/neofetch/config.conf
+/d/mylyriclyrix.cfg

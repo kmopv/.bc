@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+FILE="$1"
+[[ -z "$FILE" ]] && { echo "Usage: track-config <absolute-path>"; exit 1; }
+
+if [[ "$FILE" == ~* ]]; then
+    FILE="${FILE/#\~/$HOME}"
+fi
+REALPATH=$(realpath "$FILE" 2>/dev/null || echo "$FILE")
+
+[[ "$REALPATH" != /* ]] && { echo "Error: path must be absolute"; exit 1; }
+
+# Block directories
+if [[ -d "$REALPATH" ]]; then
+    echo "❌ $REALPATH is a directory – use individual files only"
+    exit 1
+fi
+
+TRACKED="$HOME/.bc/configs/tracked-files.txt"
+if ! grep -Fx "$REALPATH" "$TRACKED" &>/dev/null; then
+    echo "$REALPATH" >> "$TRACKED"
+    echo "✅ Added $REALPATH to tracking list."
+    setfattr -n user.backup.tracked -v "config" "$REALPATH" 2>/dev/null || \
+        echo "⚠️  Warning: could not set xattr (permission?)"
+else
+    echo "ℹ️  Already tracked."
+fi
+
+read -p "Run backup now? (y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    "$HOME/.bc/backup-config.sh"
+fi

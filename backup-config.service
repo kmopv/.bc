@@ -1,0 +1,7 @@
+[Unit]
+Description=Backup config files
+
+[Service]
+Type=oneshot
+ExecStart=/home/kms/.bc/backup-config.sh
+User=user
