@@ -14,34 +14,36 @@ log="$INVOKING_HOME/.bc/log/config-$(date +%Y%m%d-%H%M%S).log"
 mkdir -p "$(dirname "$log")"
 exec > >(tee -a "$log") 2>&1
 
-HEADER_BG='\033[48;5;24m'
-SEP_BG='\033[48;5;236m'
-ORANGE='\033[38;5;208m'
-DIM_ORANGE='\033[38;5;172m'
-GREEN_PLUS='\033[38;5;46;48;5;22m'
-YELLOW='\033[38;5;220m'
-GRAY='\033[90m'
-YELLOW_BG='\033[43;30m'
-RESET='\033[0m'
+HEADER_BG="\033[48;5;24m"
+HEADER_FG="\033[38;5;252m"
+SEP_BG="\033[48;5;17m"
+SEP_FG="\033[38;5;250m"
+ORANGE="\033[38;5;208m"
+DIM_ORANGE="\033[38;5;172m"
+GREEN_PLUS="\033[38;5;46;48;5;22m"
+YELLOW="\033[38;5;220m"
+GRAY="\033[90m"
+YELLOW_BG="\033[43;30m"
+RESET="\033[0m"
 
 HEADER_TEXT="=== Config backup started $(date +'%I:%M:%S%p %m.%d.%Y') ======================="
 FOOTER_TEXT="=== Config backup finished ======================="
 WIDTH=${#HEADER_TEXT}
-SEP=$(printf '%*s' "$WIDTH" '')
+SEP=$(printf '%*s' "$WIDTH" "")
 
 header() {
-    echo -e "${HEADER_BG}${HEADER_TEXT}${RESET}"
-    echo -e "${SEP_BG}${SEP}${RESET}"
+    echo -e "${HEADER_BG}${HEADER_FG}${HEADER_TEXT}${RESET}"
+    echo -e "${SEP_BG}${SEP_FG}${SEP}${RESET}"
 }
 footer() {
     local msg="$1"
     if [[ -n "$msg" ]]; then
         local pad=$((WIDTH - ${#msg})); [[ $pad -lt 0 ]] && pad=0
-        printf "${SEP_BG}%s%*s${RESET}\n" "$msg" "$pad" ""
+        printf "${SEP_BG}${SEP_FG}%s%*s${RESET}\n" "$msg" "$pad" ""
     else
-        echo -e "${SEP_BG}${SEP}${RESET}"
+        echo -e "${SEP_BG}${SEP_FG}${SEP}${RESET}"
     fi
-    echo -e "${HEADER_BG}${FOOTER_TEXT}${RESET}"
+    echo -e "${HEADER_BG}${HEADER_FG}${FOOTER_TEXT}${RESET}"
 }
 
 changed=0; missing=0
@@ -77,7 +79,6 @@ if [[ $changed -eq 0 && $missing -eq 0 ]]; then
     footer " No file changes happened."; exit 0
 fi
 
-# Git operations must run as the invoking user, not root
 if ! git diff --quiet || ! git diff --cached --quiet; then
     msg="Auto config backup $(date +'%Y-%m-%d %H:%M:%S')"
     if [[ -n "$SUDO_USER" ]]; then
