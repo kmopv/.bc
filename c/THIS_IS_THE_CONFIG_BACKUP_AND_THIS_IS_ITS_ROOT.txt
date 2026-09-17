@@ -1,0 +1,16 @@
+THIS IS THE CONFIG BACKUP AND THIS IS ITS ROOT /
+
+Everything in this folder (and below) mirrors the root filesystem "/".
+
+  /etc/fstab           ->  c/etc/fstab
+  /home/kmv/.bashrc    ->  c/home/kmv/.bashrc
+  /d/whatever.cfg      ->  c/d/whatever.cfg
+
+The list of tracked paths lives at:
+  c/tracked-files.txt
+
+To restore a single file, copy it out of the mirror back to /
+with the same path, or use git history to pull an older version.
+
+To add a file to tracking:
+  track /absolute/path/to/file

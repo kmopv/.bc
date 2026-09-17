@@ -5,84 +5,59 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/backup.conf"
 
-CONFIG_REPO="$HOME/.bc/configs"
+CONFIG_REPO="$HOME/.bc/c"
 CONFIG_FILELIST="$CONFIG_REPO/tracked-files.txt"
 
-cd "$CONFIG_REPO" || { echo "ERROR: cannot cd to $CONFIG_REPO"; exit 1; }
+cd "$HOME/.bc" || { echo "ERROR: cannot cd to ~/.bc"; exit 1; }
 
 log="$SCRIPT_DIR/log/config-$(date +%Y%m%d-%H%M%S).log"
 mkdir -p "$(dirname "$log")"
 exec > >(tee -a "$log") 2>&1
 
-# -------- ANSI color definitions --------
-ORANGE='\033[38;5;208m'
-BLUE='\033[94m'
-GREEN='\033[32m'
-RED='\033[31m'
-WHITE='\033[37m'
-YELLOW='\033[93m'
-YELLOW_BG='\033[43;30m'          # yellow background, black text
-LIGHTER_BLUE_BG='\033[44m'        # light blue background
-DARK_BLUE_BG='\033[48;5;17m'      # very dark blue background (global)
+# -------- ANSI colors --------
+HEADER_BG='\033[48;5;24m'              # dim blue
+SEP_BG='\033[48;5;236m'                # dark gray separator
+ORANGE='\033[38;5;208m'                # path text
+DIM_ORANGE='\033[38;5;172m'            # dimmer orange (messages)
+GREEN_PLUS='\033[38;5;46;48;5;22m'     # bright green on dark green bg
+YELLOW='\033[38;5;220m'                # missing marker
 GRAY='\033[90m'
+YELLOW_BG='\033[43;30m'
 RESET='\033[0m'
 
+# Fixed-width bars
+HEADER_TEXT="=== Config backup started $(date +'%I:%M:%S%p %m.%d.%Y') ======================="
+FOOTER_TEXT="=== Config backup finished ======================="
+WIDTH=${#HEADER_TEXT}
+SEP=$(printf '%*s' "$WIDTH" '')
+
 header() {
-    local text="=== Config backup started $(date +'%I:%M:%S%p %m.%d.%Y') ======================="
-    echo -e "${LIGHTER_BLUE_BG}${text}${RESET}"
-    # Switch to dark blue background for the rest of the content
-    echo -e "${DARK_BLUE_BG}"
+    echo -e "${HEADER_BG}${HEADER_TEXT}${RESET}"
+    echo -e "${SEP_BG}${SEP}${RESET}"
 }
 
 footer() {
     local msg="$1"
-    # Reset background before printing the light blue footer
-    echo -e "${RESET}"
     if [[ -n "$msg" ]]; then
-        # Print message on dark blue background (we are still in dark blue mode if we don't reset)
-        # Actually we already reset, so we need to reapply dark blue for the message if any
-        # But we want the message to appear on dark blue background. So we print it before reset.
-        # Let's restructure: we will print the message while still in dark blue mode,
-        # then reset and print footer.
-        echo -e "${DARK_BLUE_BG}${msg}${RESET}"
+        local pad=$((WIDTH - ${#msg}))
+        [[ $pad -lt 0 ]] && pad=0
+        printf "${SEP_BG}%s%*s${RESET}\n" "$msg" "$pad" ""
+    else
+        echo -e "${SEP_BG}${SEP}${RESET}"
     fi
-    # Now print light blue footer
-    local text="=== Config backup finished ======================="
-    echo -e "${LIGHTER_BLUE_BG}${text}${RESET}"
+    echo -e "${HEADER_BG}${FOOTER_TEXT}${RESET}"
 }
 
-# Function to push to multiple remotes (space-separated list)
-push_to_remotes() {
-    if [[ -z "$GIT_REMOTES" ]]; then
-        echo -e "${YELLOW_BG}No remotes configured – push skipped${RESET}"
-        return
-    fi
-    for remote in $GIT_REMOTES; do
-        if git remote get-url "$remote" &>/dev/null; then
-            if git push "$remote" HEAD 2>/dev/null; then
-                echo -e "Pushed to ${BLUE}$remote${RESET}"
-            else
-                echo -e "${YELLOW_BG}Push to $remote failed${RESET}"
-            fi
-        else
-            echo -e "${YELLOW_BG}Remote '$remote' not configured – push skipped${RESET}"
-        fi
-    done
-}
+changed=0
+missing=0
 
-changed_files=()
-missing_files=()
-
-header   # prints light blue header and switches background to dark blue
-
-# Print an empty line to show dark blue bar (optional)
-echo
+header
 
 while IFS= read -r line; do
     [[ -z "$line" || "$line" == \#* ]] && continue
 
     if [[ "$line" != /* ]]; then
-        echo -e "${YELLOW_BG}WARN: '$line' is not absolute (must start with /)${RESET}"
+        echo -e "${YELLOW_BG}WARN: '$line' is not absolute${RESET}"
         continue
     fi
 
@@ -90,60 +65,57 @@ while IFS= read -r line; do
     dest="$CONFIG_REPO$line"
 
     if [[ -d "$src" ]]; then
-        echo -e "${YELLOW_BG}WARN: $src is a directory (only files allowed)${RESET}"
-        continue
-    fi
-    if [[ -L "$src" ]] && [[ -d "$src" ]]; then
-        echo -e "${YELLOW_BG}WARN: $src is a symlink to a directory${RESET}"
+        echo -e "${YELLOW_BG}WARN: $src is a directory${RESET}"
         continue
     fi
 
     if [[ ! -e "$src" ]]; then
-        repo_rel_path="${dest#$CONFIG_REPO/}"
-        last_git_info=$(git log -1 --oneline -- "$repo_rel_path" 2>/dev/null | head -1)
-        if [[ -n "$last_git_info" ]]; then
-            echo -e "${YELLOW}MS${RESET} ${ORANGE}${src}${RESET}  ${GRAY}(last known: ${last_git_info})${RESET}"
+        repo_rel="c$line"
+        last=$(git log -1 --oneline -- "$repo_rel" 2>/dev/null | head -1)
+        if [[ -n "$last" ]]; then
+            echo -e "${YELLOW}MS${RESET}    ${ORANGE}${src}${RESET}  ${GRAY}(last known: ${last})${RESET}"
         else
-            echo -e "${YELLOW}MS${RESET} ${ORANGE}${src}${RESET}"
+            echo -e "${YELLOW}MS${RESET}    ${ORANGE}${src}${RESET}"
         fi
-        missing_files+=("$src")
+        missing=$((missing+1))
         continue
     fi
 
     mkdir -p "$(dirname "$dest")"
 
-    if [[ -f "$dest" ]] || [[ -L "$dest" ]]; then
-        if cmp -s "$src" "$dest" 2>/dev/null; then
-            continue
-        fi
+    if [[ -f "$dest" ]] && cmp -s "$src" "$dest" 2>/dev/null; then
+        continue
     fi
 
     cp -p "$src" "$dest" 2>/dev/null
-    echo -e "${GREEN}+${RESET} ${ORANGE}${src}${RESET}"
-    changed_files+=("$src")
+    echo -e "${GREEN_PLUS}+${RESET}     ${ORANGE}${src}${RESET}"
+    changed=$((changed+1))
 done < "$CONFIG_FILELIST"
 
-if [[ ${#changed_files[@]} -eq 0 && ${#missing_files[@]} -eq 0 ]]; then
-    # No changes: print the message and then footer (footer will reset and print light blue)
+if [[ $changed -eq 0 && $missing -eq 0 ]]; then
     footer " No file changes happened."
     exit 0
 fi
 
 if ! git diff --quiet || ! git diff --cached --quiet; then
-    git add .
-    commit_msg="Auto config backup $(date +'%Y-%m-%d %H:%M:%S')"
-    commit_hash=$(git commit -m "$commit_msg" 2>&1 | grep -oE '[0-9a-f]{7,40}' | head -1)
-    if [[ -n "$commit_hash" ]]; then
-        echo -e "Committed as ${BLUE}${commit_hash}${RESET}"
-    else
-        echo "Committed (no hash captured)"
-    fi
-else
-    echo -e "${GRAY}No file changes happened.${RESET}"
+    git add -A
+    msg="Auto config backup $(date +'%Y-%m-%d %H:%M:%S')"
+    hash=$(git commit -m "$msg" 2>&1 | grep -oE '[0-9a-f]{7,40}' | head -1)
+    [[ -n "$hash" ]] && echo -e "Committed as ${DIM_ORANGE}${hash}${RESET}"
 fi
 
-# Push to all configured remotes
-push_to_remotes
+if [[ -n "$GIT_REMOTES" ]]; then
+    for remote in $GIT_REMOTES; do
+        if git remote get-url "$remote" &>/dev/null; then
+            git push "$remote" HEAD 2>/dev/null \
+                && echo "Pushed to $remote" \
+                || echo -e "${YELLOW_BG}Push to $remote failed${RESET}"
+        else
+            echo -e "${DIM_ORANGE}Remote '$remote' not configured – skipping${RESET}"
+        fi
+    done
+else
+    echo -e "${DIM_ORANGE}No remotes configured – push skipped${RESET}"
+fi
 
-# Final footer (will reset and print light blue)
 footer ""
