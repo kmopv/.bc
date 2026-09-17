@@ -1,0 +1,12 @@
+sending incremental file list
+
+sent 166 bytes  received 20 bytes  372.00 bytes/sec
+total size is 117  speedup is 0.63
+sending incremental file list
+
+sent 50 bytes  received 19 bytes  138.00 bytes/sec
+total size is 0  speedup is 0.00
+sending incremental file list
+
+sent 117 bytes  received 20 bytes  274.00 bytes/sec
+total size is 164,447  speedup is 1,200.34
