@@ -1,162 +1,0 @@
-sending incremental file list
-created directory /b/home/kms/Documents
-./
-IDs.sh
-            338 100%    0.00kB/s    0:00:00              338 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=18/20)
-Music.desktop
-            341 100%  333.01kB/s    0:00:00              341 100%  333.01kB/s    0:00:00 (xfr#2, to-chk=17/20)
-Music.sh
-            371 100%  362.30kB/s    0:00:00              371 100%  362.30kB/s    0:00:00 (xfr#3, to-chk=16/20)
-Playlists.sh
-            395 100%  385.74kB/s    0:00:00              395 100%  385.74kB/s    0:00:00 (xfr#4, to-chk=15/20)
-Playlistvideos.sh
-            399 100%  389.65kB/s    0:00:00              399 100%  389.65kB/s    0:00:00 (xfr#5, to-chk=14/20)
-To KDE menu editor folders for .desktop
-            395 100%  385.74kB/s    0:00:00              395 100%  385.74kB/s    0:00:00 (xfr#6, to-chk=13/20)
-gen.desktop
-            344 100%  335.94kB/s    0:00:00              344 100%  335.94kB/s    0:00:00 (xfr#7, to-chk=12/20)
-geragera.txt
-         22,951 100%   21.89MB/s    0:00:00           22,951 100%   21.89MB/s    0:00:00 (xfr#8, to-chk=11/20)
-idk
-          2,546 100%    2.43MB/s    0:00:00            2,546 100%    2.43MB/s    0:00:00 (xfr#9, to-chk=10/20)
-idk2
-          9,957 100%    9.50MB/s    0:00:00            9,957 100%    9.50MB/s    0:00:00 (xfr#10, to-chk=9/20)
-jumper.blend
-         32,768  33%   31.25MB/s    0:00:00           98,091 100%   93.55MB/s    0:00:00 (xfr#11, to-chk=8/20)
-linux.sh
-            345 100%  336.91kB/s    0:00:00              345 100%  336.91kB/s    0:00:00 (xfr#12, to-chk=7/20)
-millonium.txt
-             41 100%   40.04kB/s    0:00:00               41 100%   40.04kB/s    0:00:00 (xfr#13, to-chk=6/20)
-mybrush.qc
-            646 100%  630.86kB/s    0:00:00              646 100%  630.86kB/s    0:00:00 (xfr#14, to-chk=5/20)
-mybrush.smd
-          3,703 100%    3.53MB/s    0:00:00            3,703 100%    3.53MB/s    0:00:00 (xfr#15, to-chk=4/20)
-mybrush_physics.smd
-          2,815 100%    2.68MB/s    0:00:00            2,815 100%    2.68MB/s    0:00:00 (xfr#16, to-chk=3/20)
-thatfigures.sh
-            107 100%  104.49kB/s    0:00:00              107 100%  104.49kB/s    0:00:00 (xfr#17, to-chk=2/20)
-windows copy.sh
-            351 100%  342.77kB/s    0:00:00              351 100%  342.77kB/s    0:00:00 (xfr#18, to-chk=1/20)
-windows2.sh
-            374 100%  365.23kB/s    0:00:00              374 100%  365.23kB/s    0:00:00 (xfr#19, to-chk=0/20)
-
-sent 145,926 bytes  received 431 bytes  292,714.00 bytes/sec
-total size is 144,510  speedup is 0.99
-sending incremental file list
-created directory /b/home/kms/Pictures
-./
-Screenshot_2026-08-06_09-49-32.jpg
-         32,768  21%    0.00kB/s    0:00:00          155,608 100%  117.15MB/s    0:00:00 (xfr#1, to-chk=56/58)
-Screenshot_2026-08-06_09-49-46.jpg
-         32,768  19%   31.25MB/s    0:00:00          164,047 100%  156.45MB/s    0:00:00 (xfr#2, to-chk=55/58)
-Screenshot_2026-08-06_09-49-49.jpg
-         32,768  20%   31.25MB/s    0:00:00          162,345 100%  154.82MB/s    0:00:00 (xfr#3, to-chk=54/58)
-Screenshot_2026-08-06_09-50-03.jpg
-         32,768  20%   31.25MB/s    0:00:00          161,864 100%   77.18MB/s    0:00:00 (xfr#4, to-chk=53/58)
-Screenshot_2026-08-06_09-50-07.jpg
-         32,768  20%   15.62MB/s    0:00:00          160,251 100%   76.41MB/s    0:00:00 (xfr#5, to-chk=52/58)
-Screenshot_2026-08-06_09-50-10.jpg
-         32,768  20%   15.62MB/s    0:00:00          162,377 100%   51.62MB/s    0:00:00 (xfr#6, to-chk=51/58)
-Screenshot_2026-08-06_09-50-11.jpg
-         32,768  20%   10.42MB/s    0:00:00          156,135 100%   37.23MB/s    0:00:00 (xfr#7, to-chk=50/58)
-Screenshot_20260424_163254.png
-         32,768  84%    7.81MB/s    0:00:00           38,667 100%    9.22MB/s    0:00:00 (xfr#8, to-chk=49/58)
-Screenshot_20260424_163905.png
-         32,768  84%    7.81MB/s    0:00:00           38,605 100%    9.20MB/s    0:00:00 (xfr#9, to-chk=48/58)
-Screenshot_20260511_145033.png
-         32,768  10%    4.46MB/s    0:00:00          300,304 100%   40.91MB/s    0:00:00 (xfr#10, to-chk=47/58)
-Screenshot_20260605_121024.png
-         32,768  58%    4.46MB/s    0:00:00           56,387 100%    7.68MB/s    0:00:00 (xfr#11, to-chk=46/58)
-Screenshot_20260615_160552.png
-         32,768  21%    3.91MB/s    0:00:00          154,127 100%   18.37MB/s    0:00:00 (xfr#12, to-chk=45/58)
-Screenshot_20260616_134626.png
-         29,858 100%    3.56MB/s    0:00:00           29,858 100%    3.56MB/s    0:00:00 (xfr#13, to-chk=44/58)
-Screenshot_20260626_085306.png
-         32,768   8%    3.12MB/s    0:00:00          403,431 100%   38.47MB/s    0:00:00 (xfr#14, to-chk=43/58)
-Screenshot_20260626_090017.png
-         14,293 100%    1.24MB/s    0:00:00           14,293 100%    1.24MB/s    0:00:00 (xfr#15, to-chk=42/58)
-Screenshot_20260804_125225.png
-         32,768  85%    2.84MB/s    0:00:00           38,336 100%    3.32MB/s    0:00:00 (xfr#16, to-chk=41/58)
-Screenshot_20260804_125815.png
-         32,768  83%    2.84MB/s    0:00:00           39,320 100%    3.41MB/s    0:00:00 (xfr#17, to-chk=40/58)
-Screenshot_20260804_131251.png
-         32,768  80%    2.84MB/s    0:00:00           40,675 100%    3.53MB/s    0:00:00 (xfr#18, to-chk=39/58)
-Screenshot_20260806_101150.png
-         32,768  22%    2.84MB/s    0:00:00          148,558 100%   11.81MB/s    0:00:00 (xfr#19, to-chk=38/58)
-Screenshots -> /home/kms/Pictures
-ard.png
-            520 100%   42.32kB/s    0:00:00              520 100%   42.32kB/s    0:00:00 (xfr#20, to-chk=36/58)
-canary aur.png
-         32,768   4%    2.23MB/s    0:00:00          806,912 100%   48.10MB/s    0:00:00 (xfr#21, to-chk=35/58)
-cheering like im hearing wine set the score.png
-         32,768  48%    1.95MB/s    0:00:00           68,173 100%    4.06MB/s    0:00:00 (xfr#22, to-chk=34/58)
-csp white.png
-         32,768  52%    1.95MB/s    0:00:00           62,962 100%    3.75MB/s    0:00:00 (xfr#23, to-chk=33/58)
-darktheme.png
-         30,902 100%    1.84MB/s    0:00:00           30,902 100%    1.84MB/s    0:00:00 (xfr#24, to-chk=32/58)
-ddd.png
-         32,768  11%    1.95MB/s    0:00:00          277,280 100%   15.55MB/s    0:00:00 (xfr#25, to-chk=31/58)
-ff.png
-         32,768  22%    1.84MB/s    0:00:00          144,268 100%    7.64MB/s    0:00:00 (xfr#26, to-chk=30/58)
-fighting gray light gray.png
-         32,768  54%    1.74MB/s    0:00:00           59,785 100%    3.17MB/s    0:00:00 (xfr#27, to-chk=29/58)
-filter ctrl i kdebugz.png
-         29,974 100%    1.59MB/s    0:00:00           29,974 100%    1.59MB/s    0:00:00 (xfr#28, to-chk=28/58)
-ha.vtf
-          2,968 100%  161.02kB/s    0:00:00            2,968 100%  161.02kB/s    0:00:00 (xfr#29, to-chk=27/58)
-hammer black good aero.png
-         32,768  31%    1.74MB/s    0:00:00          102,882 100%    5.16MB/s    0:00:00 (xfr#30, to-chk=26/58)
-hammerwite.png
-         32,768  62%    1.64MB/s    0:00:00           52,263 100%    2.62MB/s    0:00:00 (xfr#31, to-chk=25/58)
-jar.png
-            520 100%   26.73kB/s    0:00:00              520 100%   26.73kB/s    0:00:00 (xfr#32, to-chk=24/58)
-jxc.png
-          1,617 100%   83.11kB/s    0:00:00            1,617 100%   83.11kB/s    0:00:00 (xfr#33, to-chk=23/58)
-pain.png
-         32,768  18%    1.56MB/s    0:00:00          174,017 100%    8.30MB/s    0:00:00 (xfr#34, to-chk=22/58)
-poor.vmt
-             70 100%    3.42kB/s    0:00:00               70 100%    3.42kB/s    0:00:00 (xfr#35, to-chk=21/58)
-poor.vtf
-          1,232 100%   60.16kB/s    0:00:00            1,232 100%   60.16kB/s    0:00:00 (xfr#36, to-chk=20/58)
-promptsaver.png
-         32,768  88%    1.49MB/s    0:00:00           37,064 100%    1.68MB/s    0:00:00 (xfr#37, to-chk=19/58)
-purple properties.png
-         32,768  88%    1.49MB/s    0:00:00           37,042 100%    1.68MB/s    0:00:00 (xfr#38, to-chk=18/58)
-reliability.png
-         32,768  15%    1.42MB/s    0:00:00          217,025 100%    9.41MB/s    0:00:00 (xfr#39, to-chk=17/58)
-ss.png
-         32,768   6%    1.30MB/s    0:00:00          531,475 100%   20.27MB/s    0:00:00 (xfr#40, to-chk=16/58)
-tixl suxess.png
-         32,768  13%    1.20MB/s    0:00:00          250,312 100%    9.18MB/s    0:00:00 (xfr#41, to-chk=15/58)
-ugly hammer.png
-         32,768  71%    1.20MB/s    0:00:00           46,050 100%    1.69MB/s    0:00:00 (xfr#42, to-chk=14/58)
-view2d pan rightclick blender.png
-         15,848 100%  595.25kB/s    0:00:00           15,848 100%  595.25kB/s    0:00:00 (xfr#43, to-chk=13/58)
-vtf.png
-         28,962 100%    1.06MB/s    0:00:00           28,962 100%    1.06MB/s    0:00:00 (xfr#44, to-chk=12/58)
-winXP hammer.png
-         29,709 100%    1.09MB/s    0:00:00           29,709 100%    1.09MB/s    0:00:00 (xfr#45, to-chk=11/58)
-wine blk.png
-         32,768  79%    1.16MB/s    0:00:00           41,231 100%    1.46MB/s    0:00:00 (xfr#46, to-chk=10/58)
-wine light.png
-         13,907 100%  503.00kB/s    0:00:00           13,907 100%  503.00kB/s    0:00:00 (xfr#47, to-chk=9/58)
-wine-10  from .19 to 20.txt (arch wine)
-              9 100%    0.33kB/s    0:00:00                9 100%    0.33kB/s    0:00:00 (xfr#48, to-chk=8/58)
-wine.png
-          9,645 100%  348.85kB/s    0:00:00            9,645 100%  348.85kB/s    0:00:00 (xfr#49, to-chk=7/58)
-winr.png
-         32,768   8%    1.12MB/s    0:00:00          386,373 100%   12.71MB/s    0:00:00 (xfr#50, to-chk=6/58)
-wtf brah.png
-         12,714 100%  428.14kB/s    0:00:00           12,714 100%  428.14kB/s    0:00:00 (xfr#51, to-chk=5/58)
-xc.png
-          1,649 100%   55.53kB/s    0:00:00            1,649 100%   55.53kB/s    0:00:00 (xfr#52, to-chk=4/58)
-xc.vtf
-         14,604 100%  491.78kB/s    0:00:00           14,604 100%  491.78kB/s    0:00:00 (xfr#53, to-chk=3/58)
-materials/
-materials/xc.png
-          1,649 100%   55.53kB/s    0:00:00            1,649 100%   53.68kB/s    0:00:00 (xfr#54, to-chk=1/58)
-materials/xc.vtf
-         14,604 100%  475.39kB/s    0:00:00           14,604 100%  475.39kB/s    0:00:00 (xfr#55, to-chk=0/58)
-
-sent 5,936,822 bytes  received 1,129 bytes  11,875,902.00 bytes/sec
-total size is 5,931,423  speedup is 1.00

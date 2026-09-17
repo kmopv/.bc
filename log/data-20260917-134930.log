@@ -1,6 +1,0 @@
-mkdir: cannot create directory ‘/b’: Permission denied
-rsync: [client] failed to open exclude file /dev/fd/63: No such file or directory (2)
-rsync error: error in file IO (code 11) at exclude.c(1719) [client=3.5.0-g471e17dc]
-mkdir: cannot create directory ‘/b’: Permission denied
-rsync: [client] failed to open exclude file /dev/fd/63: No such file or directory (2)
-rsync error: error in file IO (code 11) at exclude.c(1719) [client=3.5.0-g471e17dc]
