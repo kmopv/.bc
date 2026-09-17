@@ -26,3 +26,4 @@ for src in "${DATA_SOURCES[@]}"; do
     mkdir -p "$(dirname "$dest")"
     rsync -av --delete "${exclude_args[@]}" "$src/" "$dest/"
 done
+[[ -n "$SUDO_USER" ]] && chown -R "$INVOKING_USER:$INVOKING_USER" "$INVOKING_HOME/.bc/log" 2>/dev/null

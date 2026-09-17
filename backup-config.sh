@@ -113,3 +113,4 @@ else
 fi
 
 footer ""
+[[ -n "$SUDO_USER" ]] && chown -R "$INVOKING_USER:$INVOKING_USER" "$INVOKING_HOME/.bc/log" 2>/dev/null
