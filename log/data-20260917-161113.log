@@ -1,0 +1,24 @@
+sending incremental file list
+created directory /b/home/kmv/Desktop
+./
+.directory
+testdir/
+testdir/hello.txt
+testdir/notes.txt
+
+sent 430 bytes  received 137 bytes  1,134.00 bytes/sec
+total size is 117  speedup is 0.21
+sending incremental file list
+created directory /b/home/kmv/Documents
+./
+
+sent 57 bytes  received 70 bytes  254.00 bytes/sec
+total size is 0  speedup is 0.00
+sending incremental file list
+created directory /b/home/kmv/Pictures
+./
+Screenshots/
+Screenshots/STATUE.png
+
+sent 164,657 bytes  received 96 bytes  329,506.00 bytes/sec
+total size is 164,447  speedup is 1.00

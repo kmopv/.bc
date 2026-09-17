@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 INVOKING_USER="${SUDO_USER:-$USER}"
 INVOKING_HOME=$(getent passwd "$INVOKING_USER" | cut -d: -f6)
+export HOME="$INVOKING_HOME"
 source "$INVOKING_HOME/.bc/backup.conf"
 
 log="$INVOKING_HOME/.bc/log/data-$(date +%Y%m%d-%H%M%S).log"
@@ -12,7 +13,6 @@ for pat in "${DATA_EXCLUDE[@]}"; do
 done
 
 for src in "${DATA_SOURCES[@]}"; do
-    src="${src/#\$HOME/$INVOKING_HOME}"
     src="${src/#\~/$INVOKING_HOME}"
     [[ -d "$src" ]] || { echo "WARN: $src does not exist, skipping"; continue; }
 

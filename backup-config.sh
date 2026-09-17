@@ -3,6 +3,7 @@ INVOKING_USER="${SUDO_USER:-$USER}"
 INVOKING_HOME=$(getent passwd "$INVOKING_USER" | cut -d: -f6)
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export HOME="$INVOKING_HOME"
 source "$INVOKING_HOME/.bc/backup.conf"
 
 CONFIG_REPO="$INVOKING_HOME/.bc/c"
