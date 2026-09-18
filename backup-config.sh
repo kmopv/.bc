@@ -89,10 +89,10 @@ if ! git diff --quiet || ! git diff --cached --quiet; then
         git add -A
         hash=$(git commit -m "$msg" 2>&1 | grep -oE '[0-9a-f]{7,40}' | head -1)
     fi
-    [[ -n "$hash" ]] && echo -e "Committed as ${DIM_ORANGE}${hash}${RESET}"
+    [[ -n "$hash" ]] && did_commit=1 && echo -e "Committed as ${DIM_ORANGE}${hash}${RESET}"
 fi
 
-if [[ -n "$GIT_REMOTES" ]]; then
+if [[ "${did_commit:-0}" -eq 1 && -n "$GIT_REMOTES" ]]; then
     for remote in $GIT_REMOTES; do
         if git remote get-url "$remote" &>/dev/null; then
             if [[ -n "$SUDO_USER" ]]; then
