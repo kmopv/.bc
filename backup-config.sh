@@ -77,7 +77,9 @@ while IFS= read -r line; do
 done < "$CONFIG_FILELIST"
 
 if [[ $changed -eq 0 && $missing -eq 0 ]]; then
-    footer " No file changes happened."; exit 0
+    if git diff --quiet && git diff --cached --quiet; then
+        footer " No file changes happened."; exit 0
+    fi
 fi
 
 if ! git diff --quiet || ! git diff --cached --quiet; then
